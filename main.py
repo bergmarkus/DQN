@@ -4,18 +4,25 @@ import pandas as pd
 import time
 import sys
 # local library
-import utils
+###import utils
+import utils_new
 
 
 def main(arg):
     st = time.time()
-    symbols = utils.get_sap_symbols('sap500')
-    np.random.shuffle(symbols)
-    chosen_symbols = symbols[:10]
+    ###symbols = utils.get_sap_symbols('sap500')
+    ###np.random.shuffle(symbols)
+    ###chosen_symbols = symbols[:10]
+    chosen_symbols = ['ERIC B', 'HM B']
+    
     start_date="2009-04-01"
     end_date="2015-03-31"
     # use Open data
-    input_data = utils.get_data_list_key(chosen_symbols, start_date, end_date)
+    ###input_data = utils.get_data_list_key(chosen_symbols, start_date, end_date)
+    folder = folder = "/Users/markusberg/Documents/data/finance_data/nasdaqomx/data/largeCap_NOR/"
+    cols = [1,4]  # Closing price
+    input_data = utils_new.get_data_list(folder, start_date, end_date, assets=chosen_symbols, cols=cols)
+    
     elapsed = time.time() - st
     print ("time for getting data:", elapsed)
 
